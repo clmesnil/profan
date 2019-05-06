@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <stock>
+        <h2>{{stock.type}} en {{stock.description}}</h2>
+        <div class="metadata">Modifié le {{ stock.modifiedAt | date('d/m/Y') }} à {{ stock.modifiedAt | date('H:i') }} dans la catégorie {{ stock.category.title }}</div>
+        <div class="content">
+            <img src="{{ stock.image }}" alt="">
+            <p>Quantité: {{ stock.quantite }} {{ stock.description }} à l'emplacement {{ stock.emplacement }}</p>
+            {% if stock.barcode != NULL %}
+                <p>Code barre: {{ stock.barcode }}</p>
+            {% else %}
+                <p>Code barre non renseigné</p>
+            {% endif %}
+            <hr>
+            {% if stock.category.title == 'support' %}
+                <div>
+                    <label>Dimensions: {{ stock.dimensions }} mm² /</label>
+                    <label>Grammage: {{ stock.grammage }} g/mm² /</label>
+                </div>
+            {% endif %}
+        </div>
+    </stock>
+{% endblock %}

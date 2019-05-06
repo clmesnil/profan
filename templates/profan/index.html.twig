@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visualisation des stocks{% endblock %}
+
+{% block body %}
+
+    <br></br>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarColor01" aria-label="Toggle navigation" type="button" data-target="#navbarColor01" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('show_supports') }}">Supports imprimables</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Encres</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Produits chimiques</a>
+            </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Rechercher">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </nav>
+
+    <br></br>
+
+    <div class="container">
+        <div class="row">
+            {% for stock in stocks %}
+                <article class="col-md-4">
+                    <div class="card border-primary mb-3">
+                        <div class="card-header bg-primary" style="color: white">
+                            {% if stock.quantite == 0 %}
+                                <span class="badge badge-danger" style="float: right; margin: 2px">Rupture de stock</span>
+                            {% endif %}
+                            {{ stock.Type }}
+                        </div>
+                        <img class="card-img-bottom-top" style="width: 50%; display: block" src="{{ stock.image }}" alt ="">
+                        <div class="card-body">
+                            <p>Stock : {{ stock.quantite }} </p>
+                            <div class="actions" style="text-align : center">
+                                <a href="{{ path('profan_show', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Consulter la fiche produit</a>
+                                {% if app.user %}                                
+                                    <a href="{{ path('profan_edit', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Modifier le produit</a>                               
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

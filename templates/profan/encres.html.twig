@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visualisation des stocks: Supports imprimables{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="row">
+            {% for stock in stocks %}
+                {% if stock.category.title == 'encre' %}
+                    <article class="col-md-4">
+                        <div class="card border-primary mb-3">
+                            <div class="card-header bg-primary" style="color: white">
+                                {% if stock.quantite == 0 %}
+                                    <span class="badge badge-danger" style="float: right; margin: 2px">Rupture de stock</span>
+                                {% endif %}
+                                {{ stock.Type }}
+                            </div>
+                            <img class="card-img-bottom-top" style="width: 50%; display: block" src="{{ stock.image }}" alt ="">
+                            <div class="card-body">
+                                <p>Stock : {{ stock.quantite }} </p>
+                                <div class="actions" style="text-align : center">
+                                    <a href="{{ path('profan_show', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Consulter la fiche produit</a>
+                                    {% if app.user %}                                
+                                        <a href="{{ path('profan_edit', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Modifier le produit</a>                               
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+    
