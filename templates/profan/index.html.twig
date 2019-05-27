@@ -17,10 +17,10 @@
                 <a class="nav-link" href="{{ path('show_supports') }}">Supports imprimables</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Encres</a>
+                <a class="nav-link" href="{{ path('show_encres') }}">Encres</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Produits chimiques</a>
+                <a class="nav-link" href="{{ path('show_produits') }}">Produits chimiques</a>
             </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -43,13 +43,14 @@
                             {% endif %}
                             {{ stock.Type }}
                         </div>
-                        <img class="card-img-bottom-top" style="width: 50%; display: block" src="{{ stock.image }}" alt ="">
+                        <img class="card-img-bottom-top" style="width: 30%; display: block" src="{{ stock.image }}" alt ="" class="stock">
                         <div class="card-body">
                             <p>Stock : {{ stock.quantite }} </p>
                             <div class="actions" style="text-align : center">
-                                <a href="{{ path('profan_show', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Consulter la fiche produit</a>
+                                <a href="{{ path('profan_show', {'id': stock.id}) }}" class="btn btn-info" style="margin: 2px">Consulter la fiche produit</a>
                                 {% if app.user %}                                
-                                    <a href="{{ path('profan_edit', {'id': stock.id}) }}" class="btn btn-primary" style="margin: 2px">Modifier le produit</a>                               
+                                    <a href="{{ path('profan_edit', {'id': stock.id}) }}" class="btn btn-warning" style="margin: 2px">Modifier le produit</a>  
+                                    <a href="{{ path('stock_delete', {'id': stock.id}) }}" class="btn btn-danger" style="margin: 2px"> <img src="https://image.noelshack.com/fichiers/2019/20/1/1557731577-poubelle.png" class="icon"></a>               
                                 {% endif %}
                             </div>
                         </div>

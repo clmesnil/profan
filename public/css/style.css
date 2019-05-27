@@ -1,0 +1,29 @@
+.icon
+{
+    width: 20px;
+}
+
+.stock
+{
+    width: 30%;
+}
+
+.test
+{
+    width: 100%;
+}
+
+.connecte
+{
+    vertical-align: center;
+}
+
+
+body
+{
+    background-color: white;
+    background-image: url("https://image.noelshack.com/fichiers/2019/20/1/1557739442-ecran.jpg");
+    background-repeat: repeat-y;
+    width: 100%;
+    background-size: 100%;
+}

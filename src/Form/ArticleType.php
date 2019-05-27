@@ -26,6 +26,7 @@ class ArticleType extends AbstractType
             ->add('Quantite')
             ->add('Dimensions')
             ->add('Grammage')
+            ->add('Barcode')
         ;
     }
 

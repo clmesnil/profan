@@ -86,7 +86,17 @@ class ProfanController extends AbstractController
 
         return $this->render('profan/show.html.twig', ['stock'=>$stock]);
     }
+  
+    /**
+     * @Route("/stock/{id}/delete", name ="stock_delete")
+     */
+    public function delete(Stock $stock, ObjectManager $manager)
+    {
+        $manager->remove($stock);
+        $manager->flush();
 
+        return $this->redirectToRoute('profan_stock');
+    }
 
     /**
      * @Route("/supports_imprimables", name="show_supports")

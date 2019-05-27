@@ -19,6 +19,7 @@
 
         {{ form_row(formStock.Type, {'label':'Type', 'attr': {'placeholder': "Papier mat; encre cyan"}}) }}
         {{ form_row(formStock.Category, {'label':'Catégorie'}) }}
+        {{ form_row(formStock.Barcode, {'label':'Code barre', 'attr': {'placeholder': "Scannez le code barre avec la scannette"}}) }}
         {{ form_row(formStock.Image, {'label':'Image du produit','attr': {'placeholder': "Url de l'image: http://..."}}) }}
         {{ form_row(formStock.Emplacement, {'label':'Emplacement','attr': {'placeholder': "Salle de stock; atelier"}}) }}
         {{ form_row(formStock.Description, {'attr': {'placeholder': "5L; unités; ramettes de 150"}}) }}
@@ -38,4 +39,5 @@
 
     {% endif %}
 
+    <hr>
 {% endblock %}
